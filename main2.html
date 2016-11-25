@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html  ng-app="demoApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+</head>
+<body ng-controller="mainCon">
+
+<script type="text/javascript">
+
+    function request(paras)
+    {
+        var url = location.href;
+        var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
+        var paraObj = {}
+        for (var i= 0,j; j=paraString[i]; i++){
+            paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
+        }
+        var returnValue = paraObj[paras.toLowerCase()];
+        if(typeof(returnValue)=="undefined"){
+            return "";
+        }else{
+            return returnValue;
+        }
+    }
+
+    function getOpenId(){
+//return 'o1TKas-nPZja9DNUzfHSoyPTF23o';
+
+        if(localStorage.getItem("userInfo")){
+            var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+            if(userInfo){
+                return userInfo.open_id;
+            }
+
+        }
+        return false;
+    }
+    var demoApp = angular.module('demoApp', []);
+    demoApp.factory('httpService', ['$http',function($http) {
+        var common = {};
+        common.post = function (_url,_params,_data) {
+            return $http({
+                method: 'POST',
+                url: _url,
+                params:_params,
+                data: _data,
+                timeout:15000,
+                headers: {'Content-Type': 'application/json'}
+                //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            });
+        }
+        return common;
+    }
+    ]);
+    demoApp.controller('mainCon', ['$scope','httpService',function ($scope,httpService) {
+
+        var redirect_uri = 'http://angel.1717bang.com/web/#/main';
+
+        var url = ''
+        //alert(JSON.stringify({code:request('code')}));
+        httpService.post(BASE.URL+'payment/getOnlyWXOpenid.json','',{code:request('code')}).success(function(data){
+            //alert(JSON.stringify(data));
+            if(data.open_id!=getOpenId()){
+                localStorage.clear();
+            }
+
+            window.location.replace(redirect_uri);
+        }).error(function(){
+            window.location.replace(redirect_uri);
+        });
+
+    }]);
+
+
+
+
+
+
+</script>
+</body>
+</html>

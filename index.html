@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html leng="en" ng-app="demoApp" >
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <!-- uc强制竖屏 -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/core.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <!--<link rel="stylesheet" href="css/third/animate.css" />-->
+    <link rel="stylesheet" href="css/date.css" />
+
+    <style>
+
+    </style>
+
+
+</head>
+
+<body onselectstart="return false" oncopy="return false;" style="  overflow-x: hidden !important;">
+
+    <div ng-view style="width: 100%;height: 100%;" id="slide"></div>
+
+    <show-loading  isshow="base.showLoading" content="''"></show-loading>
+    <show-popup  isshow="base.showPopup" title="base.showPopupTitle" text="base.showPopupText" ></show-popup>
+    <show-notice  isshow="base.showNotice"  ></show-notice>
+    <show-share  isshow="base.showShare"  ></show-share>
+    <show-friends  isshow="base.showFriends"  ></show-friends>
+    <show-double  isshow="base.showDouble"  ></show-double>
+    <show-login  isshow="base.showLogin"  ></show-login>
+
+
+<!--------------------    sart   --------------------->
+
+    <script type="text/javascript" src="js/lib/jssor.js"></script>
+    <script type="text/javascript" src="js/lib/jssor.slider.js"></script>
+    <script type="text/javascript" src="js/lib/countUp.min.js"></script>
+<!--------------------    end   --------------------->
+
+    <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-touch.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="js/common/func.js"></script>
+    <script type="text/javascript" src="js/common/model.js"></script>
+    <script type="text/javascript" src="js/weixin/jweixin-1.0.0.js"></script>
+    <!--<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/run.js"></script>
+
+    <!--------------  http服务 ----------->
+    <script type="text/javascript" src="js/services/http.js"></script>
+    <script type="text/javascript" src="js/common/common.js"></script>
+
+    <!--------------  微信分享 ----------->
+    <!--<script type="text/javascript" src="js/weixin/jweixin-1.0.0.js"></script>-->
+    <script type="text/javascript" src="js/services/isWXShare.js"></script>
+
+
+    <!--------------  自定义指令 ----------->
+    <script type="text/javascript" src="js/directives/directive.js"></script>
+    <!--------------  过滤器 --------------->
+    <script type="text/javascript" src="js/filters/filter.js"></script>
+    <!--------------  控制器 --------------->
+    <script type="text/javascript" src="js/controllers/loginController.js"></script>
+    <script type="text/javascript" src="js/controllers/mainController.js"></script>
+    <script type="text/javascript" src="js/controllers/platform/vipNumberController.js"></script>
+    <script type="text/javascript" src="js/controllers/platform/allMoneyController.js"></script>
+    <script type="text/javascript" src="js/controllers/helpEventsController.js"></script>
+    <script type="text/javascript" src="js/controllers/event/eventController.js"></script>
+    <script type="text/javascript" src="js/controllers/event/eventInfoController.js"></script>
+    <script type="text/javascript" src="js/controllers/addPlanController.js"></script>
+    <script type="text/javascript" src="js/controllers/addAppPlanController.js"></script>
+    <script type="text/javascript" src="js/controllers/addMyInfoController.js"></script>
+    <script type="text/javascript" src="js/controllers/event/messageController.js"></script>
+    <script type="text/javascript" src="js/controllers/juanZhuController.js"></script>
+    <script type="text/javascript" src="js/controllers/certificateController.js"></script>
+    <script type="text/javascript" src="js/controllers/accounts/allAccountController.js"></script>
+    <script type="text/javascript" src="js/controllers/accounts/juanZhuBangController.js"></script>
+    <script type="text/javascript" src="js/controllers/accounts/currentAccountController.js"></script>
+    <script type="text/javascript" src="js/controllers/accounts/currentJuanZhuController.js"></script>
+    <script type="text/javascript" src="js/controllers/accounts/allLeiJiZiYuanController.js"></script>
+    <script type="text/javascript" src="js/controllers/accounts/allHelpMoneyController.js"></script>
+    <script type="text/javascript" src="js/controllers/accounts/outHelpMoneyController.js"></script>
+    <script type="text/javascript" src="js/controllers/accounts/outMyMoneyController.js"></script>
+
+    <script type="text/javascript" src="js/controllers/accounts/accountController.js"></script>
+    <script type="text/javascript" src="js/controllers/love/loveController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/myController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/accountInfoController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/inputPasswordController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/menuInfoController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/rechargeController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/loveBookController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/loveLetterController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/friendsController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/shenQingController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/myMessageController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/moreController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/myInfoController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/aboutUsController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/adviceController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/myBaoZhangController.js"></script>
+    <script type="text/javascript" src="js/controllers/my/productController.js"></script>
+
+    <script type="text/javascript">
+
+         if(is_weixin()){
+
+         }else if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+             document.write('<script type="text/javascript" src="js/ios/cordova.js"><\/script>');
+         }else if(/(Android)/i.test(navigator.userAgent)) {
+             document.write('<script type="text/javascript" src="js/android/cordova.js"><\/script>');
+         }else{
+
+         }
+
+    </script>
+
+</body>
+</html>

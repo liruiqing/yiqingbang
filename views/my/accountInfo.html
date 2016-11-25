@@ -1,0 +1,200 @@
+    <div>
+        <p class="hr_jz_head"><img back src="img/back.png" /><span class="sfour">账户明细</span></p>
+        <div class="top_height"></div>
+        <div class= "tabCon" ng-init="page=1" style="background-color: #FAF2F1">
+            <a class= "tab" ng-class="{tabOn:page==1}" ng-click="page=1">总流水</a><a class= "tab" ng-class="{tabOn:page==2}"  ng-click="page=2">进账</a><a class= "tab" ng-class="{tabOn:page==3}"  ng-click="page=3">出账</a>
+        </div>
+        <div class="hr_ac_div" >
+            <p style="text-align: center"><span style="color: #E5466E">账户余额:<b>　{{totalMoney|number:2}}</b>元</span></p>
+            <p style="font-size: 12px;color:#888888;padding-top: 10px">{{isShare==0?"分享1元钱给您的入帮介绍人或帮内好友。您的朋友根据您分享的信息入帮的也会给你一笔小小的介绍费喔。":"您已分享给您的入帮介绍人1元钱，您的朋友根据您分享的信息入帮的也会给你一笔小小的介绍费喔。"}}</p>
+        </div>
+        <div style="border-top:1px solid #E6DCDA !important;z-index: 99 ;padding-top: 10px;margin-top: -1px">
+            <div ng-if="page==1" style="height: 200px;">
+                <div ng-include="'first.html'"></div>
+            </div>
+            <div ng-if="page==2" style="height: 200px;">
+                <div ng-include="'second.html'"></div>
+            </div>
+            <div ng-if="page==3" style="height: 200px;">
+                <div ng-include="'third.html'"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+<!------------------------------------- start  总流水  start ------------------------------------------------>
+    <script type="text/ng-template" id="first.html" >
+
+        <div class="ac_div" >
+            <div class="ac_w">时间</div>
+            <div class="ac_r" >总流水</div>
+        </div>
+
+        <div ng-repeat="item in model1">
+            <div class="ac_div2"  >
+                <div class="ac_div_in1" >
+                    <p>{{item.operate_time|date:'yyyy-MM-dd'}}<br>
+                        <span class="ac_sp1" >{{item.operate_time|date:'HH:mm:ss'}}</span>
+                    </p>
+                </div>
+                <div  class="ac_div_in3">
+                    <p ng-if="(item.operate_type==1)||(item.operate_type==4)">{{item.operate_type|filter_type}} <span style="color:#E5466E;font-weight: 700">+{{item.operate_money}}元</span>
+                        <span class="ac_sp1" style="float: right;height:20px ">余额: {{item.total_money}}元</span>
+                        <br>
+                        <span class="ac_sp1" ng-bind-html="item.loginName"></span>
+                    </p>
+
+                    <p  ng-if="(item.operate_type==0)||(item.operate_type==2)|| (item.operate_type==3)|| (item.operate_type==5)">{{item.operate_type|filter_type}} <span style="color: #845936;font-weight: 700" ng-show="item.operate_type!=5">{{item.operate_money}}元</span>
+                        <span class="ac_sp1"style="float: right;height:20px ">余额: {{item.total_money}}元</span><br>
+                        <span class="ac_sp1" ><span ng-bind-html="item.loginName"></span> {{item.operate_type==2||item.operate_type==0 ? "受助事件":""}}</span>
+                    </p>
+
+                    <p ng-click="moveTo('friends')" ng-if="item.operate_type==9">分享<span style="color: #845936;font-weight: 700">{{item.operate_money|number:0}}</span>元钱给介绍人
+                        <span class="ac_sp1"style="float: right;height:20px ">余额: {{item.total_money}}元</span><br>
+                        <span class="ac_sp1 " style="color: #E5466E;font-size: 14px">点击分出</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div style="height: 50px"></div>
+    </script>
+    <!------------------------------------- end  总流水  end ------------------------------------------------>
+
+    <!------------------------------------- start  进账  start ------------------------------------------------>
+    <script type="text/ng-template" id="second.html" >
+
+        <div class="ac_div" >
+            <div class="ac_w">时间</div>
+            <!--<div class="ac_w" >-->
+                <!--时间 <span style="color: #CBBAAC">2015  <img style="width:10px;height:10px;display: inline-block ; margin-top: 9px;position: absolute;" src="img/icon_09.png"　/></span>-->
+            <!--</div>-->
+            <div class="ac_r" >
+                总进账{{model2.accountMoney.sum_operate_money|number:2}}元
+            </div>
+        </div>
+
+        <div ng-repeat="item in model2.userOperateRecord" class="ac_div2"  >
+            <div class="ac_div_in1" >
+                <p>{{item.operate_time|date:'yyyy-MM-dd'}}<br><span class="ac_sp1" >{{item.operate_time|date:'HH:mm:ss'}}</span></p>
+            </div>
+            <div  class="ac_div_in4">
+                <p ng-if="item.operate_type==1">充值<span style="color: #E5466E;font-weight: 700"> +{{item.operate_money|number:2}}</span>元</p>
+                <p ng-if="item.operate_type==4">好友<span style="color: #845936;font-weight: 700" ng-bind-html="item.loginName"> </span>赠送 <span style="color: #E5466E;font-weight: 700">+{{item.operate_money}}</span>元</p>
+            </div>
+        </div>
+
+
+
+      <!--  <div>
+            <div class="ac_div2" style="border-top: 1px solid #E7DDDB;" >
+                <div class="ac_div_in1" >
+                    <p>2015-3-29<br>
+                        <span class="ac_sp1" >20:13:52</span>
+                    </p>
+                </div>
+                <div  class="ac_div_in4">
+                    <p >充值 <span style="color: #E5466E;font-weight: 700">+10.00</span>元</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="ac_div2"  >
+                <div class="ac_div_in1" >
+                    <p>2015-3-29<br>
+                        <span class="ac_sp1" >20:13:52</span>
+                    </p>
+                </div>
+                <div  class="ac_div_in4">
+                    <p>好友<span style="color: #845936;font-weight: 700">睡大觉 </span>赠送 <span style="color: #E5466E;font-weight: 700">+10.00</span>元</p>
+                </div>
+            </div>
+        </div>-->
+
+        <div style="height: 50px"></div>
+    </script>
+    <!------------------------------------- end  进账  end ------------------------------------------------>
+
+    <!------------------------------------- start  出账  start ------------------------------------------------>
+
+    <script type="text/ng-template" id="third.html" >
+
+
+        <div class="ac_div" >
+            <!--<div class="ac_w" >-->
+                <!--时间 <span style="color: #CBBAAC">2015  <img style="width:10px;height:10px;display: inline-block ; margin-top: 9px;position: absolute;" src="img/icon_09.png"　/></span>-->
+            <!--</div>-->
+            <div class="ac_w">时间</div>
+            <div class="ac_r" >
+                总出账<span ng-bind="model3.accountMoney.sum_operate_money|number:2"></span>元
+            </div>
+        </div>
+
+
+        <div ng-repeat="item in model3.userOperateRecord" class="ac_div2" >
+            <div class="ac_div_in1" >
+                <p>{{item.operate_time|date:'yyyy-MM-dd'}}<br><span class="ac_sp1" >{{item.operate_time|date:'HH:mm:ss'}}</span></p>
+            </div>
+            <div  class="ac_div_in4" ng-click="moveTo('event/'+item.donate_event_id)">
+                <p ng-if="item.operate_type==5">您的红包已送给好友<span style="color: #845936;font-weight: 700" ng-bind-html="item.loginName"> </span> <!--<span style="color: #845936;font-weight: 700">{{item.operate_money|number:2|filter_abs}}</span>元--></p>
+                <p ng-if="item.operate_type==9">需分享<span style="color: #845936;font-weight: 700">{{item.operate_money|number:2|filter_abs}}</span>元给推荐人</p>
+                <p ng-if="item.operate_type==0">义务捐助 <span style="color: #845936;font-weight: 700;">{{item.operate_money|number:2|filter_abs}}</span>元<br>
+                    <span class="ac_sp1" ><span ng-bind-html="item.loginName"></span>受助事件</span>
+                </p>
+                <p ng-if="item.operate_type==2">自愿捐助 <span style="color: #845936;font-weight: 700;">{{item.operate_money|number:2|filter_abs}}</span>元<br>
+                    <span class="ac_sp1" ><span ng-bind-html="item.loginName"></span>受助事件</span>
+                </p>
+            </div>
+        </div>
+
+
+<!--
+        <div>
+            <div class="ac_div2" style="border-top: 1px solid #E7DDDB;" >
+                <div class="ac_div_in1" >
+                    <p>2015-3-29<br>
+                        <span class="ac_sp1" >20:13:52</span>
+                    </p>
+                </div>
+                <div  class="ac_div_in4">
+                    <p>送给好友<span style="color: #845936;font-weight: 700">睡大觉 </span> <span style="color: #845936;font-weight: 700">-10.00</span>元</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="ac_div2"  >
+                <div class="ac_div_in1" >
+                    <p>2015-3-29<br>
+                        <span class="ac_sp1">20:13:52</span>
+                    </p>
+                </div>
+                <div  class="ac_div_in4">
+                    <p style="padding-top: 0px">义务捐助 <span style="color: #845936;font-weight: 700;">-30.00</span>元<br>
+                        <span class="ac_sp1" >小明受助事件</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="ac_div2"  >
+                <div class="ac_div_in1" >
+                    <p>2015-3-29<br>
+                        <span class="ac_sp1">20:13:52</span>
+                    </p>
+                </div>
+                <div  class="ac_div_in4">
+                    <p style="padding-top: 0px">自愿捐助 <span style="color: #845936;font-weight: 700;">-30.00</span>元<br>　
+                        <span class="ac_sp1" >小明受助事件</span>
+                    </p>
+                </div>
+            </div>
+        </div>-->
+
+
+        <div style="height: 50px"></div>
+    </script>
+    <!------------------------------------- end  总流水  end ------------------------------------------------>

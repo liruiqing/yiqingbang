@@ -1,0 +1,28 @@
+<div>
+    <p class="hr_jz_head"><img back src="img/back.png" /><span class="sfour">意见反馈</span></p>
+    <div class="top_height"></div>
+    <div class="head" style="font-size: 16px;" >
+
+        <div class="tab_bar">
+            <!--<div  class="tab_bar_item" ng-class="{isSelect:model.feedbackType==1}" ng-click="model.feedbackType=1" ><span><img class="hr_adv" src="img/icon_04.png"/></span>-->
+            <div  class="tab_bar_item" ng-class="{isSelect:model.feedbackType==1}" ng-click="aboutAdviceInfoLeft()" ><span><img class="hr_adv" src="img/icon_04.png"/></span>
+                <span>问题反馈</span>
+            </div>
+        </div>
+        <div  class="tab_bar">
+            <!--<div  class="tab_bar_item" ng-class="{isSelect:model.feedbackType==2}"  ng-click="model.feedbackType=2" ><span><img class="hr_adv" src="img/icon_02.png"/></span>-->
+            <div  class="tab_bar_item" ng-class="{isSelect:model.feedbackType==2}"  ng-click="aboutAdviceInfoRight()" ><span><img class="hr_adv" src="img/icon_02.png"/></span>
+                <span>功能建议</span>
+            </div>
+        </div>
+
+    </div>
+    <div style="border-top: 1px solid #E7DDDB;  margin: -1px 16px;font-size: 14px;" >
+        <textarea id="adviceInfo" class="advice_text" ng-model="model.content" placeholder="反馈不能正常使用的功能"></textarea>
+    </div>
+
+  <div style="margin:90px 45px">
+        <a down ng-href="" class="hr_sub" style="margin-top: 40px" ng-click="commit_advice()">提交</a>
+  </div>
+
+</div>

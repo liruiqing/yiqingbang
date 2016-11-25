@@ -1,0 +1,92 @@
+/****************************指令样式 日期选择指令  start******************************/
+.dateCon{
+    background: #F87C9E;
+    border-radius: 5px;
+    margin: 0px 1px;
+}
+.addTime{
+    display: block;height: 30px;line-height: 30px;border-radius: 5px 5px 0px 0px;color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffffff !important;
+}
+.addTime:active{
+    background:#F87C9E
+}
+.displayTime{
+    height: 30px;line-height: 30px;margin: 0px 0px;
+    border-left:1px solid #D1D1D1;
+    border-right: 1px solid #D1D1D1;
+    background: #F6F6F6;text-align: center;
+    color: #000000;
+    font-size: 14px;
+}
+.reduceTime{
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;display: block;height: 30px;line-height: 30px;;border-radius: 0px 0px 5px 5px;cursor: pointer;text-decoration: none; color: #ffffff !important;
+}
+.reduceTime:active{
+    background:#F87C9E
+}
+.datePicter{
+    display: inline-block;line-height: 30px;height: 30px;width: 150px;background: #ffffff;border: 1px solid gray;border-radius: 4px;
+}
+.datePicter table , .datePicter td{
+    border: none;
+}
+.dataClose:hover{
+    color:#F87C9E
+}
+.data_btn{
+    display: inline-block;
+    height: 30px;
+    width: 120px;
+    background: #F87C9E;
+    line-height: 30px;
+    text-align: center;
+    color: #ffffff !important;
+    border-radius: 3px;
+}
+/****************************指令样式 日期选择指令 end***************************/
+.jssorb21 {
+    position: absolute;
+    bottom: 26px;
+    left: 6px;
+}
+.jssorb21 div, .jssorb21 div:hover, .jssorb21 .av {
+    position: absolute;
+    /* size of bullet elment */
+    width: 19px;
+    height: 19px;
+    text-align: center;
+    line-height: 19px;
+    color: white;
+    font-size: 12px;
+    background: url(../img/b21.png) no-repeat;
+    overflow: hidden;
+    cursor: pointer;
+}
+.jssorb21 div { background-position: -5px -5px; }
+.jssorb21 div:hover, .jssorb21 .av:hover { background-position: -35px -5px; }
+.jssorb21 .av { background-position: -65px -5px; }
+.jssorb21 .dn, .jssorb21 .dn:hover { background-position: -95px -5px; }
+.jssora21l, .jssora21r {
+    display: block;
+    position: absolute;
+    /* size of arrow element */
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    background: url(../img/a21.png) center center no-repeat;
+    overflow: hidden;
+}
+.jssora21l { background-position: -3px -33px; top: 123px; left: 8px; }
+.jssora21r { background-position: -63px -33px; top: 123px; right: 8px; }
+.jssora21l:hover { background-position: -123px -33px; }
+.jssora21r:hover { background-position: -183px -33px; }
+.jssora21l.jssora21ldn { background-position: -243px -33px; }
+.jssora21r.jssora21rdn { background-position: -303px -33px; }

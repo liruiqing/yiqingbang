@@ -1,0 +1,15 @@
+<div>
+    <p class="hr_jz_head"><img back src="img/back.png" /><span class="sfour">详细</span></p>
+    <div class="top_height"></div>
+    <div class="hr_jz_div">
+        <p class="hr_jz_p1">您目前的余额为:</p>
+        <p class="hr_jz_p2">{{rootModel.total_money|number:2}}<font style="font-size: 18px">元</font></p>
+        <p class="hr_jz_p3" >您已参与捐助<b>{{rootModel.num}}</b>起事件,共捐助<b>{{rootModel.donate|number:2}}</b>元</p>
+    </div>
+    <div class="hr_jz_div1">
+        <p><b>充值金额: 9.00元</b></p>
+    </div>
+    <div style="margin:30px 45px">
+        <a down  ng-click="pay()" class="hr_sub">充值</a>
+    </div>
+</div>

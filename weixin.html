@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+<!--    <script type="text/javascript" src="js/common/func.js?radom=fdsf23423"></script>-->
+    <script type="text/javascript" src="js/config.js?wer=984789234"></script>
+    <script type="text/javascript">
+
+        function request(paras)
+        {
+            var url = location.href;
+            var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
+            var paraObj = {}
+            for (var i= 0,j; j=paraString[i]; i++){
+                paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
+            }
+            var returnValue = paraObj[paras.toLowerCase()];
+            if(typeof(returnValue)=="undefined"){
+                return "";
+            }else{
+                return returnValue;
+            }
+        }
+
+        var state = request('state');
+        var redirect_uri = encodeURIComponent(BASE.BASE+'#/addPlan');
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+BASE.appid+'&redirect_uri='+redirect_uri+'&response_type=code&scope=snsapi_userinfo&state='+state+'#wechat_redirect';
+        //window.location.replace('http://www.lovelynz.com/1717/web/#/main');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

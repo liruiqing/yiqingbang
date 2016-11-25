@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Hello World</title>
+    </head>
+    <body>
+    liruiqing test
+        <div class="app">
+            Check if wechat is installed
+        <button onclick="func1()">检查是否安装微信</button><br>
+            Authenticate using Wechat
+            <button onclick="func2()">Authenticate</button><br>
+            Share text
+            <button onclick="func3()">Share text</button>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+   <!--     <script type="text/javascript" src="js/index.js"></script>-->
+    </body>
+<script>
+
+    function func1(){
+        alert(11);
+        Wechat.isInstalled(function (installed) {
+            alert("Wechat installed: " + (installed ? "Yes" : "No"));
+        }, function (reason) {
+            alert("Failed: " + reason);
+        });
+    }
+
+    function func2(){
+        var scope = "snsapi_userinfo";
+        Wechat.auth(scope, function (response) {
+            // you may use response.code to get the access token.
+            alert(JSON.stringify(response));
+        }, function (reason) {
+            alert("Failed: " + reason);
+        });
+    }
+    function func3(){
+        Wechat.share({
+            text: "This is just a plain string",
+            scene: Wechat.Scene.TIMELINE   // share to Timeline
+        }, function () {
+            alert("Success");
+        }, function (reason) {
+            alert("Failed: " + reason);
+        });
+    }
+
+</script>
+</html>
+07-14 15:42:30.308: I/chromium(6579): [INFO:CONSOLE(25)] "No Content-Security-Policy meta tag found. Please add one when using the cordova-plugin-whitelist plugin.", source: file:///android_asset/www/plugins/cordova-plugin-whitelist/whitelist.js (25)

@@ -1,0 +1,59 @@
+<div>
+    <p class="hr_jz_head"><img back src="img/back.png" /><span class="sfour">爱心簿</span></p>
+    <div class="top_height"></div>
+    <div style="margin:0 10px">
+        <!--<p class="hr_zs_p">捐助总额: {{model[0].sumMoney|number:2}}元<span style="float: right">共送出{{model[0].sumSupportNo}}个祝福</span></p>-->
+        <!--<p class="hr_zs_p" >互助金：{{total_money.total_money<0?0:total_money.total_money}}</p>-->
+        <!--<p class="hr_zs_p">您已加入计划<span style="float: right">互助金：{{total_money.total_money<0?0:total_money.total_money}}</span></p>-->
+    </div>
+
+    <div style="margin-bottom: 15px"  ng-show="isAdd()">
+        <div  style="position: relative;border-top: 1px solid #CECDCD;background-color: #ffffff;padding:10px"  >
+            <img src="img/logo.png" class="hr_pic" style="width: 55px;margin-top: -1px"/>
+            <span style="font-size: 20px;color:#36020F">您已加入守护天使计划</span>
+            <p style="font-size: 12px;padding-top: 10px;color: #A27556;width: 80%">{{total_money.create_time|date:'yyyy-MM-dd'}}</p>
+        </div>
+        <div class="hr_zm_head_love" style="background-color: #ffffFF;text-align: center">
+            <div  style="border-right: 1px solid #EFEFEF;text-align: center"><span><b ng-bind="(total_money.total_money<0?'0':total_money.total_money)"></b><br></span>
+                <span class="gray">互助金（元）</span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div style="margin-bottom: 15px"  ng-repeat="item in model">
+        <!--ng-click="moveTo('event')"-->
+
+        <div  style="height: 65px;position: relative;border-top: 1px solid #CECDCD;background-color: #ffffff;padding:10px" >
+               <div style="width: 80%;float: left;height: 70px"  ng-click="moveTo('event/'+item.id+'/'+item.currentstatus)">
+                <img src="{{item.img_url}}" class="hr_pic" style=""/>
+                <span style="font-size: 14px;color:#36020F;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">{{item.event_desc}}</span>
+                <p style="font-size: 12px;padding-top: 10px;color: #A27556;width: 80%">{{item.start_date|date:'yyyy-MM-dd'}}<span style="position: absolute;right: 20px;bottom: 10px"></span><br><span>共{{item.countuserid}}次捐助</span></p>
+                </div>
+            <div  ng-click="moveTo('loveLetter/'+item.id+'/'+item.currentstatus)" style="width: 20%;float: right ; font-size: 13px;padding-top: 13px;color: #A27556;"><img src="img/icon_06.png" style="  width: 15px;height: 15px;margin-top: 14px;position: relative;top: 2px;">爱心单</div>
+        </div>
+
+        <div class="hr_zm_head_love" style="background-color: #ffffFF">
+            <div  style="float:left;width: 33%;border-right: 1px solid #EFEFEF;text-align: center"><span><b>{{item.ywDonate|number:2}}</b><br></span>
+                <span class="gray">义务捐助 (元)</span>
+            </div>
+            <div  style=";float: right; width: 31% ;text-align: center;border-left: 1px solid #EFEFEF;"><span><b>{{item.support_num|number:0}}</b><br></span>
+                <span class="gray">祝福 (个)</span>
+            </div>
+            <div  style=";float: right; width: 33% ;text-align: center;"><span><b>{{item.zyDonate|number:2}}</b><br></span>
+                <span class="gray">自愿捐助 (元)</span>
+            </div>
+        </div>
+    </div>
+<div style="height: 100px"></div>
+    <div  class=" footerBar1" >
+        <ul>
+            <li class="ng_down" ><span style="padding-left: 25px;  width: 65px;display: inline-block; " ng-click="moveTo('love')"><img class="fb_img" src="img/footerbar_09.png">加油</span>
+            </li><li class="ng_down"><a ng-href="#love" style="display: inline-block;position: absolute;top:-11px;left:50%;margin-left: -30px;line-height: 60px;"><img src="img/footer_love.png" style="height: 66px;width: 66px;  margin-top: -3px;"> </a>
+        </li><li class="ng_down" style="float:right;;padding-left: 0px;padding-right: 10px"><a  ng-href="#love" style=" color:#E5466E; padding-left: 50px;"><img class="fb_img" src="img/footerbar_06.png">留言</a></li>
+        </ul>
+    </div>
+
+</div>

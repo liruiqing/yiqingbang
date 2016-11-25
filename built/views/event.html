@@ -1,0 +1,75 @@
+<div><p class=hr_jz_head style="z-index: 9999"><img back src="img/back.png"><span class=sfour>事件详情</span></p><div class=top_height></div><div style="margin: 15px;position: relative;text-align: center;margin-bottom: 5px"><img class=hr_jz_img src="{{picAndText.img_url}}"></div><p style="height: 40px;text-align: right;margin-right:20px"><span style="font-size: 14px;color: #845936;float: left;margin-left: 15px"><img src=img/logo_mini.png style="height: 16px">平台共筹集{{model[0].event_donate_money}}元</span> <span id=isHideFold style="color: #e5466e;font-size: 14px" ng-click=isFold($event)>点击展开︾</span><br><span style="font-size: 14px;color: #845936;float: left;margin-left: -85px">互助金共{{allmoney}}元</span></p><div class=hr_jz_fc><div id=fold style="margin: 15px;height: 80px;overflow: auto;  -webkit-overflow-scrolling:touch;transition:0.6s;margin-top: 10px"><p style=";line-height: 20px">{{picAndText.event_detail}}</p></div></div><div class=tabCon ng-init="page=1"><a class=tab ng-class="{tabOn:page==1}" ng-click="page=1">事件详情</a><a class=tab ng-class="{tabOn:page==2}" ng-click="page=2">自愿捐助榜</a><a class=tab ng-class="{tabOn:page==3}" ng-click="page=3;reloadData()">我的贡献</a></div><div style="border-top:1px solid #E6DCDA !important;z-index: 99 ;padding-top: 10px;margin-top: -1px"><div ng-if="page==1" style="height: 200px"><div ng-include="'first.html'"></div></div><div ng-if="page==2" style="height: 400px;  overflow-x: hidden !important"><div ng-include="'second.html'" style="position: relative"></div></div><div ng-if="page==3" style="height: 200px"><div ng-include="'third.html'"></div></div></div><div><div class=footerBar1><ul><li class=ng_down><span style="padding-left: 25px;  width: 65px;display: inline-block" ng-click=support()><img class=fb_img src=img/footerbar_09.png>{{model[0].supportNo}}个加油</span></li><li style="width: 0px" class=ng_down ng-if="current_status==1"><a ng-href="#juanZhu{{'?event_id='+event_id+'&currentstatus='+currentstatus+'&event_track_id='+event_track_id}}" style="display: inline-block;position: absolute;top:-11px;left:50%;margin-left: -30px;line-height: 60px"><img src=img/footerbar_03.png style="height: 66px;width: 66px;  margin-top: -3px"></a></li><li style="width: 0px" class=ng_down ng-if="current_status==0"><a ng-href=#main style="display: inline-block;position: absolute;top:-11px;left:50%;margin-left: -30px;line-height: 60px"><img src=img/21_03.png style="height: 66px;width: 66px;  margin-top: -3px"></a></li><li class=ng_down style="float:right;;padding-left: 0px;padding-right: 10px"><a ng-href="#message{{'?event_id='+event_id}}" style="color:#E5466E; padding-left: 50px"><img class=fb_img src=img/footerbar_06.png>留言</a></li></ul></div></div></div><script type=text/ng-template id=first.html><div ng-show="current_status==1" >
+        <div style="width: 60%;float: left;height: 45px;margin-bottom: 10px">
+            <p style="text-align:center;color:#E5466E;"><span>已募集<b>{{money_raised}}</b>元</span><br>
+            <span style="color:#764822;border-left: 1px solid #E3D4C8;border: none">本次募集<b>{{demand_money}}</b>元</span></p>
+            </div>
+        <div style="width: 39%;float: right;height: 45px;text-align: center;border-left: 1px solid #E3D4C8;margin-bottom: 10px">
+            <a class="smallBtn" ng-href="#juanZhu{{'?event_id='+event_id+'&currentstatus='+currentstatus+'&event_track_id='+event_track_id}}" style="color:#fff;font-size: 16px;width: 90px;height: 45px;line-height: 45px">我要捐助</a>
+        </div>
+        </div>
+    <div style="clear: both"></div>
+        <!--style="background-color: #FF91BE;" style="background-color: #90CAFE;"  style="background-color: #90CAFE;"-->
+    <div class="hr_line_a"  ng-repeat="item in model">
+       <div class="hr_yuan" style="background-color: #FF91BE;">
+            <div style="padding-top: 12px;">
+                <span>{{item.current_date|date:'yyyy'}}</span><br>
+                <span>{{item.current_date|date:'MM-dd'}}</span>
+            </div>
+       </div>
+        <div class="hr_xq_info" ng-click="setModel(item);moveTo('eventInfo/'+event_id+'/'+current_status+'/'+item.event_track_id+'/'+item.currentstatus)" >
+            <p style="text-align: center;color: #845936;"><b>{{item.event_title}}</b></p>
+            <p style=";overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;">  {{item.current_content}}</p>
+            <div class="arrow" style="position: absolute;top:13px;left:-8px">
+                <div class="arrow1"></div>
+                <div class="arrow2"></div>
+            </div>
+        </div>
+    </div></script><script type=text/ng-template id=second.html><div class="hr_line_jz" style="margin-bottom: 20px" >
+        <div style="margin: 0 10px 0 -15px;;padding-top: 10px">
+            <div style="background-color: #ffffFF;border:1px solid #E5DBD9;overflow: auto">
+                <p ng-repeat="item in model1" class="hr_p">{{item.rowNum}} <img src={{item.img_url}}><span ng-bind-html="(item.real_name==''||item.real_name==null)? item.login_name:item.real_name"><span><b>{{item.donate}}</b>元</span></p>
+            </div>
+        </div>
+    </div>
+    <span class="hr_name" ng-click="showmyPosition()"  style="text-align: center;width: 45px;float: right;margin-left: 5px;margin-right: 10px;border: 1px solid #EBE6E5;;background-color: #FAF4F4;border-radius: 17px"> <img src="img/give_07.png" style="vertical-align:middle"/></span>
+    <div id="myposition" class="hr_jz_fc" style="overflow: hidden;overflow-x: hidden !important;position: absolute;background-color: #FAF4F4; height: 27px;width: 165px;border-radius: 15px;border: 1px solid #EBE6E5;text-align: center;z-index: 9999;right: -180px;">
+        <span class="hr_name" ng-click="reloading()" style=";float: right;color:#E12E5C;margin-right: 10px;padding-top: 4px"><img src="img/give_05.png" style="margin-right: 0px;margin-left: 5px;"/>返回顶部 </span>
+        <span class="hr_name" ng-click="findMe()" style="float: left;margin-left: 10px;color:#E12E5C;padding-top: 4px"><img src="img/give_03.png"/>我的位置 </span>
+    </div>
+    <div style="margin:60px 45px">
+        <a down ng-click="base.showFriends=true" class="hr_sub" style="margin-top: 50px">分享</a>
+    </div>
+<div style="height: 50px"></div></script><script type=text/ng-template id=third.html><div  style="background-color: #ffffff;">
+        <div style="background-color: #ffffFF">
+            <div style="padding:10px 20px;border-bottom: 1px solid #EBEFD9 ">
+                <p style="font-size: 16px;color:#845936 ; line-height: 20px;">义务捐助<br>
+                    <span style="font-size: 12px;color: #A28D70">{{model2.dutyDonateCount}}次捐助</span>
+                    <span style="font-size: 12px;color: #A28D70;;float: right;  display: inline-block;margin-top: -10px;"><b style="font-size: 16px;color: #845936" >{{model2.dutyDonate}}</b>元</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div  style="background-color: #ffffff;">
+        <div style="background-color: #ffffFF">
+            <div style="padding:10px 20px;border-bottom: 1px solid #EBEFD9 ">
+                <p style="font-size: 16px;color:#845936 ; line-height: 20px;">自愿捐助<br>
+                    <span style="font-size: 12px;color: #A28D70">{{model2.donateCount}}次自愿捐助</span>
+                    <span style="font-size: 12px;color: #A28D70;;float: right;  display: inline-block;margin-top: -10px;"><b style="font-size: 16px;color: #845936" >{{model2.donate}}</b>元</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div  style="background-color: #ffffff;">
+        <div style="background-color: #ffffFF">
+            <div style="padding:10px 20px;border-bottom: 1px solid #EBEFD9;">
+                <p style="font-size: 16px;color:#845936 ; line-height:40px;">送祝福
+                    <!--<span style="font-size: 12px;color: #A28D70">共{{model2.loveTimes}}(人/次)参与捐助</span>                                         {{model2.myLoveTimes}}-->
+                    <span style="font-size: 12px;color: #A28D70;;float: right;  display: inline-block;"><b style="font-size: 16px;color: #845936" >{{model2.myLoveTimes}}</b>个</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div style="margin:30px 45px">
+        <a down ng-click="base.showFriends=true" class="hr_sub">分享让更多人关注</a>
+    </div>
+    <div style="height: 100px"></div></script>

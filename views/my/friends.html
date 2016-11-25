@@ -1,0 +1,52 @@
+<div>
+    <p class="hr_jz_head"><img back src="img/back.png" /><span class="sfour">好友圈</span></p>
+    <div class="top_height"></div>
+    <div style="position: relative">
+        <div class="hr_head_logo" >
+            <img src="img/banner_02.png" style="display:block;width: 100%;height: 120px" />
+        </div>
+    </div>
+    <div class="fr_div1" >
+        <img ng-src="{{my_img}}" /><br>
+    </div>
+    <div style="height: 30px;background-color: #ffffff"></div>
+    <div style="background-color: #ffffff" ng-repeat="item in model">
+        <div class="fr_div2" >
+            <img src="{{item.img_url}}" />
+            <p class="fr_p2" ><span ng-bind-html="item.login_name"></span>
+                <br><font class="ac_sp1">{{item.create_time | date:'yyyy-MM-dd'}}</font><br>
+                <font ng-if="item.user_type=='SHARE_MONEY'||item.user_type=='RELATION_SHARE_FRIEND_AUTHORIZE'||item.user_type=='SHARE_MONEY_FRIENDS'||item.user_type=='WX_SHARE_FRIENDS'" style="color: #A27556">微信好友</font>
+                <font ng-if="item.user_type=='SHARE_FRIENDS'" style="color: #A27556">{{item.flag=='1'?'由您带入本帮':'带您入帮'}}</font>
+                <font ng-if="item.user_type=='SUPPORT_FRIEND'" style="color: #A27556">{{item.flag=='1'?'您帮助过的':'帮助过您的'}}</font>
+                <font ng-if="item.user_type=='GROUP_FRIEND'" style="color: #A27556">帮内好友</font>
+
+            </p>
+        </div>
+        <!--<div class="fr_div2" >-->
+            <!--<img src="img/head.png" />-->
+            <!--<p style="display: inline-block;margin-left: 5px;font-size: 14px;color: #E5466E" >-->
+                <!--大明<br><font class="ac_sp1">2015-3-9</font><br><font style="color: #A27556">回复我: 齐心协力</font>-->
+            <!--</p>-->
+            <!--<div class="arrow3" style="position: absolute;top:13px;left:-8px">-->
+                <!--<div class="arrow4"></div>-->
+                <!--<div class="arrow5"></div>-->
+            <!--</div>-->
+            <!--<div class="fr_div" >-->
+                <!--<img src="img/head.png" />-->
+                <!--<p class="fr_p" >互助事件 <br>-->
+                <!--赛规划啊哦我过去二七二哥哥哥哥哥哥儿歌过去诶减肥呢佛心哥哥哥儿歌过去诶减肥呢佛-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    </div>
+
+    <footer ng-show="show_share">
+        <div style="margin:30px 45px 10px 45px" >
+            <a ng-click="showPopup('请点击右上角分享朋友圈')" down  class="hr_sub" >给您的介绍人一个红包</a>
+        </div>
+        <p style="text-align:center;font-size: 14px;color:#A27556">注:　一定要给你的介绍人喔！您只有一个红包。</p>
+    </footer>
+    <div style="margin-bottom: 100px">
+    </div>
+</div>

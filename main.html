@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" >
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/weixin/jweixin-1.0.0.js"></script>
+<!--    <script type="text/javascript" src="js/common/func.js?radom=fdsf23423"></script>-->
+    <script type="text/javascript">
+
+
+        function request(paras)
+        {
+            var url = location.href;
+            var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
+            var paraObj = {}
+            for (var i= 0,j; j=paraString[i]; i++){
+                paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
+            }
+            var returnValue = paraObj[paras.toLowerCase()];
+            if(typeof(returnValue)=="undefined"){
+                return "";
+            }else{
+                return returnValue;
+            }
+        }
+
+        var share_openid = request('share_openid');
+        var money = request('money');
+        var share_get_money_openid = request('share_get_money_openid');
+        var state = '';
+        if(share_openid){
+            state +='&share_openid='+share_openid;
+        }
+        if(money){
+            state +='&money='+money;
+        }
+        if(share_get_money_openid){
+            state +='&share_get_money_openid='+share_get_money_openid;
+        }
+        var redirect_uri = 'http://angel.1717bang.com/web/main2.html';
+        if(state){
+            redirect_uri += '?'+state;
+        }
+
+        var isclose =false;
+        window.onpageshow = function(event) {
+            //alert(JSON.stringify(event.persisted));
+            //alert( localStorage.getItem("is_refresh"));
+            //alert(event.persisted);
+            if (event.persisted || localStorage.getItem("is_refresh")) {
+                localStorage.removeItem('is_refresh');
+                var weixin_obj = JSON.parse(localStorage.getItem('weixin_data'));
+
+                wx.config({
+                    debug: false,
+                    appId: weixin_obj.appid,
+                    timestamp: weixin_obj.timestamp,
+                    nonceStr: weixin_obj.nonceStr,
+                    signature: weixin_obj.signature,
+                    jsApiList: ['closeWindow']
+                });
+                wx.ready(function () {
+                    wx.closeWindow();
+                });
+
+            }else{
+                redirect_uri = encodeURIComponent(redirect_uri);
+                //alert(redirect_uri);
+                window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf6d98b24d8e2185a&redirect_uri='+redirect_uri+'&response_type=code&scope=snsapi_base&state=0#wechat_redirect');
+
+
+            }
+        };
+        </script>
+</head>
+<body>
+
+</body>
+</html>

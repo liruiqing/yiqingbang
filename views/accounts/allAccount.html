@@ -1,0 +1,30 @@
+<div>
+    <p class="hr_jz_head"><img back src="img/back.png" /><span class="sfour">捐助清单</span></p>
+    <div class="top_height"></div>
+    <div style="margin:0 10px">
+        <p class="hr_zs_p">捐助总额: {{model[0].sumMoney}}元<span style="float: right">共送出{{model[0].sumSupportNo | number:0 }}个祝福</span></p>
+    </div>
+    <div ng-repeat="item in model" style="margin-bottom: 15px">
+        <div style="height: 80px;border-top: 1px solid #CECDCD;background-color: #ffffff;padding:10px">
+            <img ng-click="moveTo('event/'+item.id+'/'+item.currentstatus)"  ng-src="{{item.img_url}}" class="hr_pic" style="height: 65px"/>
+            <span ng-click="moveTo('event/'+item.id+'/'+item.currentstatus)"  style="font-size: 16px;color:#36020F ;font-weight: 700; margin-top: 6px;display: block;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;">{{item.event_desc}}</span>
+            <div style="width: 60%;" ng-click="moveTo('event/'+item.id+'/'+item.currentstatus)" >
+                <p style="font-size: 13px;padding-top: 10px;color: #A27556">{{item.start_date|date:'yyyy-MM-dd'}}<br><span>共{{item.countuserid}}人参与捐助</span></p>
+            </div>
+            <div ng-click="moveTo('loveLetter/'+item.id+'/'+item.currentstatus)" style="float: right;width: 40%;text-align: right;color: #A27556;font-size: 14px;margin-top: -30px">
+                <img src="img/icon_01.png"  style="  width: 15px;height: 15px;margin-top: 14px;position: relative;top: 2px;"> 感谢信
+            </div>
+        </div>
+        <div class="hr_zm_head_love" style="background-color: #ffffFF">
+            <div  style="float:left;width: 33%;border-right: 1px solid #EFEFEF;text-align: center"><span><b>{{item.ywDonate}}</b><br></span>
+                <span class="gray">互助金捐出 (元)</span>
+            </div>
+            <div  style=";float: right; width: 31% ;text-align: center;border-left: 1px solid #EFEFEF;"><span><b>{{item.support_num}}</b><br></span>
+                <span class="gray">祝福 (个)</span>
+            </div>
+            <div  style=";float: right; width: 33% ;text-align: center;"><span><b>{{item.zyDonate}}</b><br></span>
+                <span class="gray">自愿捐出 (元)</span>
+            </div>
+        </div>
+    </div>
+</div>

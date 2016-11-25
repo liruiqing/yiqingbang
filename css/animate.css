@@ -1,0 +1,119 @@
+/*****************************************************************************************/
+.slide.ng-enter{
+    -webkit-transition:0.3s linear all;
+    transition:0.3s ease-in all;
+}
+
+.slide.ng-enter { -webkit-transform:rotateX(90deg);opacity: 0}        /* starting animations for enter */
+.slide.ng-enter-active {   -webkit-transform:rotateX(0deg);opacity: 1} /* terminal animations for enter */
+
+.flyIn.ng-enter{
+    -webkit-transition:0.5s linear all;
+    transition:0.5s ease-in all;
+}
+
+.flyIn.ng-enter { margin-left: -500px;opacity: 0}        /* starting animations for enter */
+.flyIn.ng-enter-active {   margin-left: 0px;opacity: 1} /* terminal animations for enter */
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .repeated-item
+  class
+*/
+.repeated-item.ng-enter, .repeated-item.ng-move {
+    -webkit-transition:0.5s linear all;
+    -moz-transition:0.5s linear all;
+    -o-transition:0.5s linear all;
+    transition:0.5s linear all;
+    opacity:0;
+}
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.repeated-item.ng-enter.ng-enter-active, .repeated-item.ng-move.ng-move-active {
+    opacity:1;
+}
+
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .repeated-item class
+*/
+.repeated-item.ng-enter {
+    -webkit-animation:0.5s my_animation_enter;
+    -moz-animation:0.5s my_animation_enter;
+    -o-animation:0.5s my_animation_enter;
+    animation:0.5s my_animation_enter;
+}
+@keyframes my_animation_enter {
+    from { margin-left: -500px }
+    to { margin-left: 0px }
+}
+@-webkit-keyframes my_animation_enter {
+    from { margin-left: -500px }
+    to { margin-left: 0px }
+}
+.repeated-item.ng-leave {
+    -webkit-animation:0.5s my_animation;
+    -moz-animation:0.5s my_animation;
+    -o-animation:0.5s my_animation;
+    animation:0.5s my_animation;
+}
+
+@keyframes my_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+/*
+  Unfortunately each browser vendor requires
+  its own definition of keyframe animation code...
+*/
+@-webkit-keyframes my_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+@-moz-keyframes my_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+@-o-keyframes my_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+/*****************************************************************************************/
+
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************/
+
